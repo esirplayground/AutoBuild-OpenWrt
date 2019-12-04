@@ -1,4 +1,4 @@
-# Actions-OpenWrt
+# AutoBuild-OpenWrt
 
 Build OpenWrt using GitHub Actions
 

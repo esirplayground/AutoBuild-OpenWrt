@@ -1,6 +1,7 @@
 # AutoBuild-OpenWrt
 
 Build OpenWrt using GitHub Actions
+Hereby thank P3TERX's for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/
 
 ## Usage
 

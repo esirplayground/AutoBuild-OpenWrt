@@ -5,7 +5,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_x86_64
+name: Build_Wrt1900AC
 
 on: 
   release:
@@ -72,10 +72,10 @@ jobs:
 
     - name: Configuration Customization - Build_x86_64
       env:
-        CONFIG_FILE: 'x86_64.config'
+        CONFIG_FILE: 'wrt1900.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./customize.sh && ./customize.sh
+        chmod +x ./customize_wrt1900.sh && ./customize_wrt1900.sh
         cd openwrt && make defconfig
         
     - name: Download package

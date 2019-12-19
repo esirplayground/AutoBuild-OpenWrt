@@ -6,7 +6,8 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 #1. Modify default IP
-sed -i 's/10.10.10.6/10.10.10.4/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.10.10.6/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/192.168.$((addr_offset++)).1/10.10.$((addr_offset++)).4/g' openwrt/package/base-files/files/bin/config_generate
 cd ./package
 git clone https://github.com/tty228/luci-app-serverchan.git
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git

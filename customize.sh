@@ -5,9 +5,10 @@
 # Author: eSirPlayground
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
-#1. Modify default IP
+#1. Modify default IP 设置编译后本机IP，等同vi /etc/sysconfig/network
 sed -i 's/192.168.1.1/10.10.10.6/g' openwrt/package/base-files/files/bin/config_generate
 sed -i 's/192.168.$((addr_offset++)).1/10.10.$((addr_offset++)).4/g' openwrt/package/base-files/files/bin/config_generate
+#下载自定义固件，需要配合config文件使用
 openwrt/scripts/feeds update luci-lib-json
 openwrt/scripts/feeds install luci-lib-json
 cd openwrt/package

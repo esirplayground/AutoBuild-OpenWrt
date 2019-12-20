@@ -11,12 +11,12 @@ on:
   release:
     types: [published]
 
-  push: #提交代码触发脚本脚本执行
+  #push: #提交代码触发脚本脚本执行
     branches: 
       - master
 
   schedule: #设定时间触发 * * * * * 每个*代表每一位分别是分時日月周
-    - cron: 0 4 * * *
+    - cron: 0 12 * * *
   
   #watch:
   #  types: [started]

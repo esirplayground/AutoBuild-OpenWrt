@@ -11,7 +11,7 @@ on:
   release:
     types: [published]
 
-  #push: #提交代码触发脚本脚本执行
+  push: #提交代码触发脚本脚本执行
     branches: 
       - master
 

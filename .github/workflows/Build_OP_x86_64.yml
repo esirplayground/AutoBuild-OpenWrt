@@ -16,7 +16,7 @@ on:
       - master
 
   schedule: #设定时间触发 * * * * * 每个*代表每一位分别是分時日月周
-    - cron: 0 12 * * *
+    - cron: 0 18 * * *
   
   #watch:
   #  types: [started]

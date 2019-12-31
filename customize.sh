@@ -13,7 +13,7 @@ sed -i 's/192.168.$((addr_offset++)).1/10.10.$((addr_offset++)).4/g' openwrt/pac
 openwrt/scripts/feeds update luci-lib-json
 openwrt/scripts/feeds install luci-lib-json
 
-git clone https://github.com/tty228/luci-app-serverchan.git openwrt/package/
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git openwrt/package/
-git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker openwrt/package/
-git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman openwrt/package/
+git clone https://github.com/tty228/luci-app-serverchan.git ./package/
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git ./package/
+git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker ./package/
+git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman ./package/

@@ -5,7 +5,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_Newifi_D2
+name: Build_Newifi_D2-1-22
 
 on: 
   release:

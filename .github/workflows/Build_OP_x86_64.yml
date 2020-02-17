@@ -11,7 +11,7 @@ on:
   release:
     types: [published]
 
-  #push:
+  push:
     branches: 
       - master
 

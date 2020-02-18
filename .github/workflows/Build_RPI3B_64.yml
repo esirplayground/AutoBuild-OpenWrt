@@ -68,9 +68,9 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
-    - name: Configuration Customization - Build_x86_64
+    - name: Configuration Customization - Build_RPI3B_x64
       env:
-        CONFIG_FILE: 'RPI3B_64.config'
+        CONFIG_FILE: 'RPI3B_x64.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh

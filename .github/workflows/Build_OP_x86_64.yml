@@ -20,7 +20,8 @@ on:
   
   #watch:
   #  types: [started]
-
+env:
+  SSH_ACTIONS: true
 jobs:
   build:
     runs-on: ubuntu-latest

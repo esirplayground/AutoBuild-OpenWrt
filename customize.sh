@@ -16,4 +16,4 @@ openwrt/scripts/feeds install luci-lib-json
 git clone https://github.com/tty228/luci-app-serverchan.git openwrt/package/lean/luci-app-serverchan
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git openwrt/package/luci-app-adguardhome
 git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker 
-git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman 
+# git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman 

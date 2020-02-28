@@ -13,8 +13,8 @@ sed -i 's/192.168.$((addr_offset++)).1/10.10.$((addr_offset++)).4/g' openwrt/pac
 #下载自定义固件，需要配合config文件使用
 openwrt/scripts/feeds update luci-lib-json
 openwrt/scripts/feeds install luci-lib-json
-git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-app-serverchan
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+git clone https://github.com/tty228/luci-app-serverchan.git ./package/luci-app-serverchan
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git ./package/luci-app-adguardhome
 #git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker 
 # git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman 
 #1

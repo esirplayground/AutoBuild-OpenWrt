@@ -9,6 +9,7 @@
 echo -e "src-git lienol https://github.com/Lienol/openwrt-package" >> openwrt/feeds.conf.default
 sed -i 's/192.168.1.1/10.10.10.6/g' openwrt/package/base-files/files/bin/config_generate
 sed -i 's/192.168.$((addr_offset++)).1/10.10.$((addr_offset++)).4/g' openwrt/package/base-files/files/bin/config_generate
+cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 #下载自定义固件，需要配合config文件使用
 openwrt/scripts/feeds update luci-lib-json
 openwrt/scripts/feeds install luci-lib-json

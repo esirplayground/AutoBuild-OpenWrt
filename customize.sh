@@ -17,3 +17,4 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-ap
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker 
 # git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman 
+#1

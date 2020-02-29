@@ -70,6 +70,12 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
+    #- name: Import external feeds
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/Lienol/openwrt-package package/lienol
+    #    git clone "your_github_link" package/"your_folder_name"      
+
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'x86_64.config'

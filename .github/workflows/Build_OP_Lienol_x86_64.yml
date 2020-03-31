@@ -95,5 +95,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
+        name: OpenWrt_Lienol_x86_x64
         path: openwrt/bin

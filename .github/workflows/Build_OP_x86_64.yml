@@ -76,7 +76,6 @@ jobs:
     - name: Import external feeds
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/lejitao2013/Lienol-obsolete.git package/lienol
         git clone https://github.com/tty228/luci-app-serverchan.git package/serverchan
         git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguardhome      
 

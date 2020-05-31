@@ -18,8 +18,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -65,6 +65,14 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         sed -i '5s/#//' feeds.conf.default
+        
+    - name: 自定义第三方插件
+      run: |
+        cd ./openwrt/package
+        cd openwrt-packages
+        git clone git clone https://github.com/fw876/helloworld
+        git clone git clone https://github.com/rufengsuixing/luci-app-adguardhome
+        git clone git https://github.com/sypopo/luci-theme-atmaterial.git package/lean/luci-theme-atmaterial
         
     - name: Update & Install feeds
       working-directory: ./openwrt

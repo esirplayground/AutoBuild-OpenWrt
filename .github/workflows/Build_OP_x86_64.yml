@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-    #branches: 
-      #- master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -59,8 +59,8 @@ jobs:
 
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/coolsnowwolf/lede
-        REPO_BRANCH: master
+        REPO_URL: https://github.com/Lienol/openwrt
+        REPO_BRANCH: dev-19.07
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt

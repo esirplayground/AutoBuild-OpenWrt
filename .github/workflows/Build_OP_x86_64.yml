@@ -64,7 +64,7 @@ jobs:
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-        sed -i '5s/#//' feeds.conf.default
+        sed -i '11s/#//' feeds.conf.default
         
     - name: Update & Install feeds
       working-directory: ./openwrt

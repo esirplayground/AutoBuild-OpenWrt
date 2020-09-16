@@ -81,6 +81,7 @@ jobs:
         git clone https://github.com/Lienol/openwrt-OpenAppFilter.git package/OpenAppFilter
         git clone https://github.com/garypang13/luci-app-eqos package/eqos
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/jd-dailybonus
+        git clone https://github.com/esirplayground/Lienol-obsolete.git package/passwall
               
     - name: Configuration Customization - Build_x86_64
       env:

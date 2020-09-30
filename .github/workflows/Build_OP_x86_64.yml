@@ -82,7 +82,6 @@ jobs:
         git clone https://github.com/garypang13/luci-app-eqos package/eqos
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/jd-dailybonus
         git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-        git clone https://github.com/Lienol/openwrt-package package/lienol
         git clone https://github.com/xiaorouji/openwrt-package.git package/lienol
               
     - name: Configuration Customization - Build_x86_64

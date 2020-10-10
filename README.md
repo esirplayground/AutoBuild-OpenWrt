@@ -1,4 +1,7 @@
 # AutoBuild-OpenWrt
+[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat&logo=appveyor&label=LICENSE)](https://github.com/esirplayground/AutoBuild-OpenWrt/blob/master/LICENSE)
+![GitHub Stars](https://img.shields.io/github/stars/esirplayground/AutoBuild-OpenWrt.svg?style=flat&logo=appveyor&label=Stars&logo=github)
+![GitHub Forks](https://img.shields.io/github/forks/esirplayground/AutoBuild-OpenWrt.svg?style=flat&logo=appveyor&label=Forks&logo=github)
 
 Build OpenWrt firware [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) using GitHub Actions  
 Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/

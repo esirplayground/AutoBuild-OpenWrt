@@ -77,13 +77,13 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/Lienol/openwrt-package package/lienol
-         git clone https://github.com/tty228/luci-app-serverchan.git package/serverchan
-         git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguardhome
-         git clone https://github.com/Lienol/openwrt-OpenAppFilter.git package/OpenAppFilter
-         git clone https://github.com/garypang13/luci-app-eqos package/eqos
-         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/jd-dailybonus
-         git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-         git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/luci-app-bandwidthd
+        git clone https://github.com/tty228/luci-app-serverchan.git package/serverchan
+        git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguardhome
+        git clone https://github.com/Lienol/openwrt-OpenAppFilter.git package/OpenAppFilter
+        git clone https://github.com/garypang13/luci-app-eqos package/eqos
+        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/jd-dailybonus
+        git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+        git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/luci-app-bandwidthd
               
     - name: Configuration Customization - Build_x86
       env:

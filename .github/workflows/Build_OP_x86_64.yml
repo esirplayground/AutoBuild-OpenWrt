@@ -42,8 +42,7 @@ jobs:
         git clone https://github.com/coolsnowwolf/lede openwrt
         cd openwrt
         sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-		echo "src-git OpenClash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
-		
+        echo "src-git OpenClash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
         
     - name: Update & Install feeds
       working-directory: ./openwrt

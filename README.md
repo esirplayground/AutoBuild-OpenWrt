@@ -27,3 +27,4 @@ You could edit and enable "Sync Code" YAML file to let your forked repo keep upd
   - Uncomment 'schedule-cron' 2 lines under **`On`** section and commit changes to let the script sync the code everyday on 3 am[UTC +8]
 
 [For the details please visit my Y2B Channel (in Chinese) | 视频教程](https://www.youtube.com/c/esirplayground)
+

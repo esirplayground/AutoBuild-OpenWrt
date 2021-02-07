@@ -1,7 +1,18 @@
-name: NanoPi R4S OpenWrt
+name: Build_NanoPi_R4S
+
 on: 
-  repository_dispatch:
-  workflow_dispatch:
+  release:
+    types: [published]
+
+  #push:
+  #  branches: 
+  #    - master
+
+  #schedule:
+  #  - cron: 0 8 * * 5
+  
+  #watch:
+  #  types: [started]
 
 jobs:
   OpenWrt-18_06:

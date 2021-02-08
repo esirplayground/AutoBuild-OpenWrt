@@ -1,0 +1,232 @@
+diff --git a/include/target.mk b/include/target.mk
+index 8185f836ec..42127a90c5 100644
+--- a/include/target.mk
++++ b/include/target.mk
+@@ -171,7 +171,7 @@ LINUX_RECONF_DIFF = $(SCRIPT_DIR)/kconfig.pl - '>' $(call __linux_confcmd,$(filt
+ ifeq ($(DUMP),1)
+   BuildTarget=$(BuildTargets/DumpCurrent)
+ 
+-  CPU_CFLAGS = -Os -pipe
++  CPU_CFLAGS = -O3 -pipe
+   ifneq ($(findstring mips,$(ARCH)),)
+     ifneq ($(findstring mips64,$(ARCH)),)
+       CPU_TYPE ?= mips64
+@@ -212,7 +212,7 @@ ifeq ($(DUMP),1)
+   endif
+   ifeq ($(ARCH),aarch64)
+     CPU_TYPE ?= generic
+-    CPU_CFLAGS_generic = -mcpu=generic
++    CPU_CFLAGS_generic = -march=armv8-a+crypto+crc -mcpu=cortex-a73.cortex-a53+crypto+crc -mtune=cortex-a73.cortex-a53
+     CPU_CFLAGS_cortex-a53 = -mcpu=cortex-a53
+   endif
+   ifeq ($(ARCH),arc)
+diff --git a/package/ctcgfw/luci-app-turboacc/Makefile b/package/ctcgfw/luci-app-turboacc/Makefile
+index 7e07b87fee..a08cc4dbe3 100644
+--- a/package/ctcgfw/luci-app-turboacc/Makefile
++++ b/package/ctcgfw/luci-app-turboacc/Makefile
+@@ -22,7 +22,7 @@ LUCI_PKGARCH:=all
+ define Package/$(PKG_NAME)/config
+ config PACKAGE_$(PKG_NAME)_INCLUDE_flow-offload
+ 	bool "Include Flow Offload"
+-	depends on PACKAGE_$(PKG_NAME)_INCLUDE_shortcut-fe=n
++	#depends on PACKAGE_$(PKG_NAME)_INCLUDE_shortcut-fe=n
+ 	default y
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_shortcut-fe
+diff --git a/package/ctcgfw/luci-app-turboacc/root/etc/config/turboacc b/package/ctcgfw/luci-app-turboacc/root/etc/config/turboacc
+index 067aad2763..b221186ba4 100644
+--- a/package/ctcgfw/luci-app-turboacc/root/etc/config/turboacc
++++ b/package/ctcgfw/luci-app-turboacc/root/etc/config/turboacc
+@@ -1,9 +1,9 @@
+ 
+ config turboacc 'config'
+ 	option sw_flow '1'
+-	option hw_flow '1'
+-	option sfe_flow '1'
+-	option sfe_bridge '1'
++	option hw_flow '0'
++	option sfe_flow '0'
++	option sfe_bridge '0'
+ 	option sfe_ipv6 '0'
+ 	option bbr_cca '1'
+ 	option fullcone_nat '1'
+diff --git a/package/ctcgfw/luci-app-vssr/root/usr/share/vssr/genconfig_trojan.lua b/package/ctcgfw/luci-app-vssr/root/usr/share/vssr/genconfig_trojan.lua
+index 875813dc08..f2e186e9c2 100644
+--- a/package/ctcgfw/luci-app-vssr/root/usr/share/vssr/genconfig_trojan.lua
++++ b/package/ctcgfw/luci-app-vssr/root/usr/share/vssr/genconfig_trojan.lua
+@@ -21,8 +21,8 @@ local trojan = {
+         verify = (server.insecure == '0') and true or false,
+         verify_hostname = (server.tls == '1') and true or false,
+         cert = '',
+-        cipher = 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:AES128-SHA:AES256-SHA:DES-CBC3-SHA',
+-        cipher_tls13 = 'TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384',
++        cipher = 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:AES128-SHA:AES256-SHA:DES-CBC3-SHA',
++        cipher_tls13 = 'TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384',
+         sni = server.peer,
+         alpn = {'h2', 'http/1.1'},
+         curve = '',
+diff --git a/package/lean/luci-app-cpufreq/root/etc/config/cpufreq b/package/lean/luci-app-cpufreq/root/etc/config/cpufreq
+index 5c2c070e9d..e1ce69b52e 100644
+--- a/package/lean/luci-app-cpufreq/root/etc/config/cpufreq
++++ b/package/lean/luci-app-cpufreq/root/etc/config/cpufreq
+@@ -1,3 +1,9 @@
+ 
+ config settings 'cpufreq'
++	option governor0 'schedutil'
++	option maxfreq0 '1608000'
++	option governor4 'schedutil'
++	option maxfreq4 '2016000'
++	option minfreq0 '600000'
++	option minfreq4 '600000'
+ 
+diff --git a/target/linux/rockchip/armv8/config-5.4 b/target/linux/rockchip/armv8/config-5.4
+index f2ff03d941..075f172ce5 100644
+--- a/target/linux/rockchip/armv8/config-5.4
++++ b/target/linux/rockchip/armv8/config-5.4
+@@ -9,6 +9,7 @@ CONFIG_ARCH_ROCKCHIP=y
+ CONFIG_ARCH_WANT_COMPAT_IPC_PARSE_VERSION=y
+ CONFIG_ARC_EMAC_CORE=y
+ CONFIG_ARM64_CNP=y
++CONFIG_ARM64_CRYPTO=y
+ # CONFIG_ARM64_ERRATUM_1165522 is not set
+ # CONFIG_ARM64_ERRATUM_1286807 is not set
+ # CONFIG_ARM64_ERRATUM_1418040 is not set
+@@ -115,16 +116,138 @@ CONFIG_CRC16=y
+ CONFIG_CRC32_SLICEBY8=y
+ CONFIG_CRC_T10DIF=y
+ CONFIG_CROSS_MEMORY_ATTACH=y
++CONFIG_CRYPTO_842=y
++CONFIG_CRYPTO_ACOMP2=y
++CONFIG_CRYPTO_ADIANTUM=y
++CONFIG_CRYPTO_AEGIS128=y
++CONFIG_CRYPTO_AEGIS128_SIMD=y
++CONFIG_CRYPTO_AES_ARM64=y
++CONFIG_CRYPTO_AES_ARM64_BS=y
++CONFIG_CRYPTO_AES_ARM64_CE=y
++CONFIG_CRYPTO_AES_ARM64_CE_BLK=y
++CONFIG_CRYPTO_AES_ARM64_CE_CCM=y
++CONFIG_CRYPTO_AES_ARM64_NEON_BLK=y
++CONFIG_CRYPTO_AES_TI=y
++CONFIG_CRYPTO_AKCIPHER=y
++CONFIG_CRYPTO_AKCIPHER2=y
++CONFIG_CRYPTO_ANSI_CPRNG=y
++CONFIG_CRYPTO_ANUBIS=y
++CONFIG_CRYPTO_ARC4=y
++CONFIG_CRYPTO_AUTHENC=y
++CONFIG_CRYPTO_BLOWFISH=y
++CONFIG_CRYPTO_BLOWFISH_COMMON=y
++CONFIG_CRYPTO_CAMELLIA=y
++CONFIG_CRYPTO_CAST5=y
++CONFIG_CRYPTO_CAST6=y
++CONFIG_CRYPTO_CAST_COMMON=y
++CONFIG_CRYPTO_CBC=y
++CONFIG_CRYPTO_CCM=y
++CONFIG_CRYPTO_CFB=y
++CONFIG_CRYPTO_CHACHA20=y
++CONFIG_CRYPTO_CHACHA20POLY1305=y
++CONFIG_CRYPTO_CHACHA20_NEON=y
++CONFIG_CRYPTO_CMAC=y
+ CONFIG_CRYPTO_CRC32C=y
+ CONFIG_CRYPTO_CRCT10DIF=y
++CONFIG_CRYPTO_CRCT10DIF_ARM64_CE=y
++CONFIG_CRYPTO_CRYPTD=y
++CONFIG_CRYPTO_CTR=y
++CONFIG_CRYPTO_CTS=y
++CONFIG_CRYPTO_DEFLATE=y
++CONFIG_CRYPTO_DES=y
++CONFIG_CRYPTO_DEV_CCP=y
++CONFIG_CRYPTO_DEV_CCP_DD=y
++CONFIG_CRYPTO_DEV_CCREE=y
++CONFIG_CRYPTO_DEV_HISI_SEC=y
+ # CONFIG_CRYPTO_DEV_ROCKCHIP is not set
++CONFIG_CRYPTO_DEV_SAFEXCEL=y
++CONFIG_CRYPTO_DEV_SP_CCP=y
++CONFIG_CRYPTO_DH=y
+ CONFIG_CRYPTO_DRBG=y
++CONFIG_CRYPTO_DRBG_CTR=y
++CONFIG_CRYPTO_DRBG_HASH=y
+ CONFIG_CRYPTO_DRBG_HMAC=y
+ CONFIG_CRYPTO_DRBG_MENU=y
++CONFIG_CRYPTO_ECB=y
++CONFIG_CRYPTO_ECC=y
++CONFIG_CRYPTO_ECDH=y
++CONFIG_CRYPTO_ECHAINIV=y
++CONFIG_CRYPTO_ECRDSA=y
++CONFIG_CRYPTO_ESSIV=y
++CONFIG_CRYPTO_FCRYPT=y
++CONFIG_CRYPTO_GCM=y
++CONFIG_CRYPTO_GF128MUL=y
++CONFIG_CRYPTO_GHASH=y
++CONFIG_CRYPTO_GHASH_ARM64_CE=y
++CONFIG_CRYPTO_HASH_INFO=y
++CONFIG_CRYPTO_HMAC=y
++CONFIG_CRYPTO_HW=y
+ CONFIG_CRYPTO_JITTERENTROPY=y
++CONFIG_CRYPTO_KEYWRAP=y
++CONFIG_CRYPTO_KHAZAD=y
++CONFIG_CRYPTO_KPP=y
++CONFIG_CRYPTO_KPP2=y
++CONFIG_CRYPTO_LIB_DES=y
++CONFIG_CRYPTO_LIB_SHA256=y
++CONFIG_CRYPTO_LRW=y
++CONFIG_CRYPTO_LZ4=y
++CONFIG_CRYPTO_LZ4HC=y
++CONFIG_CRYPTO_LZO=y
++CONFIG_CRYPTO_MD4=y
++CONFIG_CRYPTO_MD5=y
++CONFIG_CRYPTO_MICHAEL_MIC=y
++CONFIG_CRYPTO_NHPOLY1305=y
++CONFIG_CRYPTO_NHPOLY1305_NEON=y
++CONFIG_CRYPTO_NULL=y
++CONFIG_CRYPTO_OFB=y
++CONFIG_CRYPTO_PCBC=y
++CONFIG_CRYPTO_POLY1305=y
++CONFIG_CRYPTO_RMD128=y
++CONFIG_CRYPTO_RMD160=y
++CONFIG_CRYPTO_RMD256=y
++CONFIG_CRYPTO_RMD320=y
+ CONFIG_CRYPTO_RNG=y
+ CONFIG_CRYPTO_RNG2=y
+ CONFIG_CRYPTO_RNG_DEFAULT=y
++CONFIG_CRYPTO_RSA=y
++CONFIG_CRYPTO_SALSA20=y
++CONFIG_CRYPTO_SEED=y
++CONFIG_CRYPTO_SEQIV=y
++CONFIG_CRYPTO_SERPENT=y
++CONFIG_CRYPTO_SHA1=y
++CONFIG_CRYPTO_SHA1_ARM64_CE=y
++CONFIG_CRYPTO_SHA256=y
++CONFIG_CRYPTO_SHA256_ARM64=y
++CONFIG_CRYPTO_SHA2_ARM64_CE=y
++CONFIG_CRYPTO_SHA3=y
++CONFIG_CRYPTO_SHA3_ARM64=y
++CONFIG_CRYPTO_SHA512=y
++CONFIG_CRYPTO_SHA512_ARM64=y
++CONFIG_CRYPTO_SHA512_ARM64_CE=y
++CONFIG_CRYPTO_SIMD=y
++CONFIG_CRYPTO_SM3=y
++CONFIG_CRYPTO_SM3_ARM64_CE=y
++CONFIG_CRYPTO_SM4=y
++CONFIG_CRYPTO_SM4_ARM64_CE=y
++CONFIG_CRYPTO_STATS=y
++CONFIG_CRYPTO_STREEBOG=y
++CONFIG_CRYPTO_TEA=y
++CONFIG_CRYPTO_TEST=m
++CONFIG_CRYPTO_TGR192=y
++CONFIG_CRYPTO_TWOFISH=y
++CONFIG_CRYPTO_TWOFISH_COMMON=y
++CONFIG_CRYPTO_USER=y
++CONFIG_CRYPTO_USER_API=y
++CONFIG_CRYPTO_USER_API_AEAD=y
++CONFIG_CRYPTO_USER_API_HASH=y
++CONFIG_CRYPTO_USER_API_RNG=y
++CONFIG_CRYPTO_USER_API_SKCIPHER=y
++CONFIG_CRYPTO_VMAC=y
++CONFIG_CRYPTO_WP512=y
++CONFIG_CRYPTO_XCBC=y
++CONFIG_CRYPTO_XTS=y
++CONFIG_CRYPTO_XXHASH=y
++CONFIG_CRYPTO_ZSTD=y
+ CONFIG_DEBUG_BUGVERBOSE=y
+ # CONFIG_DEVFREQ_GOV_PASSIVE is not set
+ CONFIG_DEVFREQ_GOV_PERFORMANCE=y

@@ -47,6 +47,13 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         patch -p1 < "${GITHUB_WORKSPACE}/patches/1806-modify_for_r4s.patch"
+        
+    #- name: Import external feeds
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+    #    git clone "your_github_link" package/"your_folder_name"    
+        
     - name: Build OpenWrt-18.06
       run: |
         cd "/home/runner/openwrt"

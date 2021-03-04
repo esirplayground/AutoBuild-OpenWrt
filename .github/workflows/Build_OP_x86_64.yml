@@ -5,7 +5,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_x86_64
+name: KwongKee_Build_x86_64
 
 on: 
   release:

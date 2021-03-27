@@ -93,21 +93,7 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-  
-    - name: argon_new主题
-      working-directory: ./openwrt
-      run: |
-        cd package/lean
-        rm -rt luci-theme-argon
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-        
-    - name: netdata汉化
-      working-directory: ./openwrt
-      run: |
-        cd package/lean
-        rm -rf luci-app-netdata
-        gif clone https://github.com/sirpdboy/luci-app-netdata.git
-    
+      
     - name: Build firmware
       working-directory: ./openwrt
       run: |

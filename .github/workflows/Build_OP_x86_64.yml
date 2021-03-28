@@ -98,22 +98,8 @@ jobs:
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
-        
-    - name: 删除多余文件
-      working-directory: ./openwrt
-      run: |
-        cd bin/targets/*/*
-        rm rf packages && mkdir packages
-        find -name "*feeds.buildinfo*" | xargs -i mv -f {} packages
-        find -name "*version.buildinfo*" | xargs -i mv -f {} packages
-        find -name "*.manifest*" | xargs -i mv -f {} packages
-        find -name "*.bin*" | xargs -i mv -f {} packages
-        find -name "*.vmdk*" | xargs -i mv -f {} packages
-        find -name "*rootfs.img*" | xargs -i mv -f {} packages
-        find -name "*tar.gz*" | xargs -i mv -f {} packages
-        rm -rf packages
-    
+        make -j$(nproc) V=s      
+     
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:

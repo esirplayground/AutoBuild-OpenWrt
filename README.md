@@ -4,7 +4,8 @@
 ![GitHub Forks](https://img.shields.io/github/forks/esirplayground/AutoBuild-OpenWrt.svg?style=flat&logo=appveyor&label=Forks&logo=github)
 ![GitHub last commit](https://img.shields.io/github/last-commit/esirplayground/AutoBuild-OpenWrt?label=Latest%20Commit&logo=github)
 
-使用GitHub Actions编译Lean的OpenWrt固件，感谢P3TERX为此项目做出的惊人工作！感谢KFERMercer为此项目做出不可思议的工作。您可以编辑并启用“同步代码”YAML文件，让您的项目分支保持更新。
+使用GitHub Actions编译Lean的OpenWrt固件，感谢P3TERX为此项目做出的惊人工作！感谢KFERMercer为此项目做出不可思议的工作。
+您可以编辑并启用“同步代码”YAML文件，让您的项目分支保持更新。
 Build OpenWrt firware [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) using GitHub Actions  
 Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/  
 
@@ -21,11 +22,11 @@ You could edit and enable "Sync Code" YAML file to let your forked repo keep upd
   - Edit the workflow file you desire，uncomment push section 3 lines together and submit the commit.(Other 2 methods wait you to discover)
   - The build starts automatically. Progress can be viewed on the Actions page.
   - When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
-  - Default Web Admin IP: `192.168.5.1`, username `root`，password `password`
+  - Default Web Admin IP: `192.168.2.1`, username `root`，password `password`
 
 **3. Sync Code**
   - Uncomment 'push-branches-master' 3 lines under **`On`** section and commit changes to let the script sync the code once for you.
   - Uncomment 'schedule-cron' 2 lines under **`On`** section and commit changes to let the script sync the code everyday on 3 am[UTC +8]
 
+感谢esirplayground提供此项目源码！
 
-本固件登录IP:192.168.2.1 用户名：root 密码：password

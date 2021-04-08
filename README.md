@@ -4,11 +4,8 @@
 ![GitHub Forks](https://img.shields.io/github/forks/esirplayground/AutoBuild-OpenWrt.svg?style=flat&logo=appveyor&label=Forks&logo=github)
 ![GitHub last commit](https://img.shields.io/github/last-commit/esirplayground/AutoBuild-OpenWrt?label=Latest%20Commit&logo=github)
 
-使用GitHub Actions编译Lean的OpenWrt固件，感谢P3TERX为此项目做出的惊人工作！感谢KFERMercer为此项目做出不可思议的工作。
-您可以编辑并启用“同步代码”YAML文件，让您的项目分支保持更新。
 Build OpenWrt firware [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) using GitHub Actions  
 Hereby thank P3TERX for his amazing job: https://github.com/P3TERX/Actions-OpenWrt/  
-
 Hereby thank KFERMercer for his amazing job: https://github.com/KFERMercer/OpenWrt-CI  
 You could edit and enable "Sync Code" YAML file to let your forked repo keep updated.
 
@@ -29,4 +26,5 @@ You could edit and enable "Sync Code" YAML file to let your forked repo keep upd
   - Uncomment 'schedule-cron' 2 lines under **`On`** section and commit changes to let the script sync the code everyday on 3 am[UTC +8]
 
 感谢esirplayground提供此项目源码！
+
 

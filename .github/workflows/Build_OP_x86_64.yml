@@ -81,8 +81,7 @@ jobs:
         git clone https://github.com/kenzok8/openwrt-packages.git package/kenzo
         git clone https://github.com/vernesong/OpenClash.git package/OpenClash
         git clone https://github.com/jiawm/luci-app-poweroff.git package/poweroff
-        git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
-    #    git clone "your_github_link" package/"your_folder_name"      
+      # git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization - Build_x86_64
       env:

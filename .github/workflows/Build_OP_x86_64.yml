@@ -79,7 +79,6 @@ jobs:
         git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
         git clone https://github.com/fw876/helloworld.git package/hellowrold
         git clone https://github.com/kenzok8/openwrt-packages.git package/kenzo
-        git clone https://github.com/sirpdboy/luci-app-netdata.git package/netdata
         git clone https://github.com/jiawm/luci-app-poweroff.git package/poweroff
       # git clone https://github.com/vernesong/OpenClash.git package/OpenClash
       # git clone "your_github_link" package/"your_folder_name"      

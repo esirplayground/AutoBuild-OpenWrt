@@ -10,7 +10,8 @@ name: Build_x86_64
 on: 
   release:
     types: [published]
-
+  repository_dispatch:
+  workflow_dispatch:
   #push:
   #  branches: 
   #    - master

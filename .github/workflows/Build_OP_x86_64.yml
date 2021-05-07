@@ -74,9 +74,9 @@ jobs:
         ./scripts/feeds install -a
 
     - name: Import external feeds
-     working-directory: ./openwrt
-     run: |
-       git clone https://github.com/vernesong/OpenClash package/stx-custom
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/vernesong/OpenClash package/stx-custom
 
     - name: Configuration Customization - Build_x86_64
       env:

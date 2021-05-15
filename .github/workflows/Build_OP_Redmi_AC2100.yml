@@ -63,7 +63,7 @@ jobs:
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-        sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
+        sed -i 's/src-git helloworld/src-git helloworld/g' ./feeds.conf.default
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
@@ -88,7 +88,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
+        make -j$(nproc) V=sc
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:

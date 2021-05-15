@@ -78,6 +78,7 @@ jobs:
       run: |
         git clone https://github.com/vernesong/OpenClash package/openclash
         git clone https://github.com/rufengsuixing/luci-app-adguardhome package/adguardhome
+        git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon-2
 
     - name: Configuration Customization - Build_x86_64
       env:

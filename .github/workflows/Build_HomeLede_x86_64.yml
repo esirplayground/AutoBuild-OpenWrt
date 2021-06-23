@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@k5
+      uses: actions/checkout@master
 
     - name: Initialization environment
       env:
@@ -102,7 +102,7 @@ jobs:
         make -j$(nproc) V=s
 
     - name : Upload artifact
-      uses: actions/upload-artifact@k5
+      uses: actions/upload-artifact@master
       with:
         name: HomeLede
         path: HomeLede/bin

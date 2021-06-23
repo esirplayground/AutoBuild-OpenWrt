@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - k5
+  push:
+    branches: 
+      - k5
 
   #schedule:
   #  - cron: 0 8 * * 5

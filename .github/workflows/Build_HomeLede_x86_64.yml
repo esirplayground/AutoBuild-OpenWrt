@@ -68,7 +68,8 @@ jobs:
     - name: Update & Install feeds
       working-directory: ./HomeLede
       run: |
-         ./prepareCompile.sh
+         sed -i '33i ./feeds/packages/net/adguardhome' prepareCompile.sh
+         ./prepareCompile.sh         
     #    ./scripts/feeds update -a
     #    ./scripts/feeds install -a
     #    ./scripts/feeds install -a

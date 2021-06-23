@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@k5
 
     - name: Initialization environment
       env:

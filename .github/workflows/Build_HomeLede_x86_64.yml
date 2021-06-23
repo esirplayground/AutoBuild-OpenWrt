@@ -73,11 +73,11 @@ jobs:
     #    ./scripts/feeds install -a
     #    ./scripts/feeds install -a
 
-    - name: Import external feeds
-      working-directory: ./HomeLede
-      run: |
-        cd feeds/packages/net
-        git clone https://github.com/coolxpb/mbusd.git mbusd
+    #- name: Import external feeds
+    #  working-directory: ./HomeLede
+    #  run: |
+    #    cd feeds/packages/net
+    #    git clone https://github.com/coolxpb/mbusd.git mbusd
     #    git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization - Build_HomeLede_x86_64

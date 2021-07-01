@@ -78,8 +78,7 @@ jobs:
       run: |
         git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
         git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-        cd package/lean
-        rm -rf luci-theme-argon
+        rm -rf package/lede/luci-theme-argon
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
     - name: Configuration Customization - Build_x86_64

@@ -15,8 +15,8 @@ on:
   #  branches: 
   #    - master
 
-  #schedule:
-  #  - cron: 0 21 * * *
+  schedule:
+    - cron: 0 21 * * *
   
   #watch:
   #  types: [started]
@@ -76,7 +76,7 @@ jobs:
     - name: Install theme
       working-directory: ./openwrt
       run: |
-        sudo rm -rf package/lede/luci-theme-argon
+        sudo rm -rfv package/lede/luci-theme-argon
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
     - name: Import external feeds

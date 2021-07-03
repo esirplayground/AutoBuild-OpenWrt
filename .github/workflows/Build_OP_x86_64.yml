@@ -11,12 +11,12 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
-  schedule:
-    - cron: 0 21 * * *
+  #schedule:
+  #  - cron: 0 21 * * *
   
   #watch:
   #  types: [started]
@@ -73,11 +73,11 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    - name: Install theme
-      working-directory: ./openwrt
-      run: |
-        sudo rm -rfv package/lede/luci-theme-argon
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+    #- name: Install theme
+    #  working-directory: ./openwrt
+    #  run: |
+    #    sudo rm -rfv package/lede/luci-theme-argon
+    #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
     - name: Import external feeds
       working-directory: ./openwrt

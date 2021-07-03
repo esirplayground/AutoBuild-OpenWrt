@@ -11,12 +11,12 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
-  schedule:
-    - cron: 0 21 * * *
+  #schedule:
+  #  - cron: 0 21 * * *
   
   #watch:
   #  types: [started]
@@ -78,10 +78,10 @@ jobs:
       run: |
         git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
-    - name: Import external feeds - JerryKuKu Argon
-      working-directory: ./openwrt
-      run: |
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+    #- name: Import external feeds - JerryKuKu Argon
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
 
     - name: Import external feeds - JerryKuKu Argon-config
       working-directory: ./openwrt
@@ -93,10 +93,10 @@ jobs:
       run: |
         git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan      
 
-    - name: Import external feeds - JerryKuKu jd-dailybonus
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus-jerrykuku
+    #- name: Import external feeds - JerryKuKu jd-dailybonus
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus-jerrykuku
 
     - name: Configuration Customization - Build_x86_64
       env:

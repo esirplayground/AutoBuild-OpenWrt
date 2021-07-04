@@ -71,6 +71,12 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
+    
+    #- name: Import external feeds - JerryKuKu Argon
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+    
     - name: Configuration Customization - Build_Newifi_D2
       env:
         CONFIG_FILE: 'Newifi_D2.config'

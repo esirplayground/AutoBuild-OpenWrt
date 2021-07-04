@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  push:
-    branches: 
-      - master
+  #push:
+  #  branches: 
+  #    - master
 
   #schedule:
   #  - cron: 0 21 * * *
@@ -81,15 +81,15 @@ jobs:
     - name: Import external feeds - JerryKuKu jd-dailybonus
       working-directory: ./openwrt
       run: |
-        rm -rfv package/lean/luci-app-jd-dailybonus
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
+        rm -rfv package/lean/luci-app-jd-dailybonus
         mv -fv package/luci-app-jd-dailybonus package/lean/luci-app-jd-dailybonus
 
     - name: Import external feeds - JerryKuKu Argon
       working-directory: ./openwrt
       run: |
-        rm -rfv package/lean/luci-theme-argon
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+        rm -rfv package/lean/luci-theme-argon
         mv -fv package/luci-theme-argon package/lean/luci-theme-argon
 
     - name: Import external feeds - JerryKuKu Argon-config

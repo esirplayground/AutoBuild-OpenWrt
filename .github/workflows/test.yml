@@ -1,0 +1,46 @@
+name: Build_x86_64
+
+on: 
+  release:
+    types: [published]
+
+  push:
+    branches: 
+      - master
+
+  #schedule:
+  #  - cron: 0 21 * * *
+  
+  #watch:
+  #  types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Clone source code
+      env: 
+        REPO_URL: https://github.com/coolsnowwolf/lede
+        REPO_BRANCH: master
+      run: |
+        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+    #    cd openwrt
+    #    echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+        
+    - name: Update & Install feeds
+      working-directory: ./openwrt
+      run: |
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        ./scripts/feeds install -a
+ 
+    - name: Import external feeds - JerryKuKu Argon
+      working-directory: ./openwrt
+      run: |
+        rm -rfv package/lean/luci-theme-argon
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+        mv -f package/luci-theme-argon package/lean/luci-theme-argon

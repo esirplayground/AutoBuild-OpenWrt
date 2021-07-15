@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   schedule:
     - cron: 0 21 * * *
@@ -71,7 +71,6 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        sleep 5
         ./scripts/feeds install -a
 
     - name: Import external feeds - passwall
@@ -83,18 +82,14 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
-        sleep 5
         rm -rfv package/lean/luci-app-jd-dailybonus
-        sleep 5
         mv -fv package/luci-app-jd-dailybonus package/lean/luci-app-jd-dailybonus
 
     - name: Import external feeds - JerryKuKu Argon
       working-directory: ./openwrt
       run: |
         git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-        sleep 5
         rm -rfv package/lean/luci-theme-argon
-        sleep 5
         mv -fv package/luci-theme-argon package/lean/luci-theme-argon
 
     - name: Import external feeds - JerryKuKu Argon-config

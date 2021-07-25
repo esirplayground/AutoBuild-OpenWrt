@@ -23,7 +23,7 @@ You could edit and enable "Sync Code" YAML file to let your forked repo keep upd
   - Edit the workflow file you desire，uncomment push section 3 lines together and submit the commit.(Other 2 methods wait you to discover)
   - The build starts automatically. Progress can be viewed on the Actions page.
   - When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
-  - Default Web Admin IP: `192.168.5.1`, username `root`，password `password`
+  - Default Web Admin IP: `192.168.5.1`, username `root`, no login password
 
 **3. Sync Code**
   - Uncomment 'push-branches-master' 3 lines under **`On`** section and commit changes to let the script sync the code once for you.

@@ -100,7 +100,9 @@ jobs:
     - name: Import external feeds - serverchan
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan      
+        git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+        rm -rfv package/lean/luci-app-serverchan
+        mv -fv package/luci-theme-argon package/lean/luci-app-serverchan
 
     - name: Configuration Customization - Build_x86_64
       env:

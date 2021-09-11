@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 21 * * *
@@ -102,7 +102,7 @@ jobs:
       run: |
         git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
         rm -rfv package/lean/luci-app-serverchan
-        mv -fv package/luci-theme-argon package/lean/luci-app-serverchan
+        mv -fv package/luci-app-serverchan package/lean/luci-app-serverchan
 
     - name: Configuration Customization - Build_x86_64
       env:

@@ -18,8 +18,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -83,6 +83,11 @@ jobs:
     #  working-directory: ./openwrt
     #  run: |
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+    
+    - name: Import external feeds - Adguard Home
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
 
     - name: Configuration Customization - Build_x86_64
       env:

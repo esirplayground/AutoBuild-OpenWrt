@@ -2,22 +2,22 @@
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
 # Author: eSirPlayground
-# Youtube Channel: https://goo.gl/fvkdwm 
+# Youtube Channel: https://goo.gl/fvkdwm
 #=================================================
 
 name: Build_x86_64
 
-on: 
+on:
   release:
     types: [published]
 
   #push:
-  #  branches: 
+  #  branches:
   #    - master
 
-  schedule:
-    - cron: 0 21 * * *
-  
+  #schedule:
+  #  - cron: 0 8 * * 5
+
   #watch:
   #  types: [started]
 
@@ -58,14 +58,20 @@ jobs:
         sudo -E apt-get clean
 
     - name: Clone source code
-      env: 
+      env:
         REPO_URL: https://github.com/coolsnowwolf/lede
         REPO_BRANCH: master
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-    #    cd openwrt
-    #    echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-        
+        cd openwrt
+        echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+
+    - name: Cache
+      uses: klever1988/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        prefix: ./openwrt
+
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
@@ -73,36 +79,16 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    - name: Import external feeds - passwall
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
+    #- name: Import external feeds - passwall
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+    #    git clone "your_github_link" package/"your_folder_name"
 
-    - name: Import external feeds - JerryKuKu jd-dailybonus
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
-        rm -rfv package/lean/luci-app-jd-dailybonus
-        mv -fv package/luci-app-jd-dailybonus package/lean/luci-app-jd-dailybonus
-
-    - name: Import external feeds - JerryKuKu Argon
-      working-directory: ./openwrt
-      run: |
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-        rm -rfv package/lean/luci-theme-argon
-        mv -fv package/luci-theme-argon package/lean/luci-theme-argon
-
-    - name: Import external feeds - JerryKuKu Argon-config
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
-
-    - name: Import external feeds - serverchan
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-        rm -rfv package/lean/luci-app-serverchan
-        mv -fv package/luci-app-serverchan package/lean/luci-app-serverchan
+    #- name: Import external feeds - JerryKuKu Argon
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
 
     - name: Configuration Customization - Build_x86_64
       env:
@@ -111,7 +97,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
-        
+
     - name: Download package
       working-directory: ./openwrt
       run: |

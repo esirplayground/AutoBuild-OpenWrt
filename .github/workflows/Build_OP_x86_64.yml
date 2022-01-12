@@ -18,8 +18,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -74,11 +74,15 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    #- name: Import external feeds - passwall
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"      
+    - name: Import external feeds - passwall
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+        git clone -b lede https://github.com/pymumu/luci-app-smartdns package/luci-app-smartdns
+        git clone https://github.com/pymumu/openwrt-smartdns package/openwrt-smartdns     
+        git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns package/luci-app-tencentddns 
+        git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
+        git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
     #- name: Import external feeds - JerryKuKu Argon
     #  working-directory: ./openwrt

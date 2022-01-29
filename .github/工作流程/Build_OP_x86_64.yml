@@ -83,6 +83,7 @@ jobs:
         git clone https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns package/luci-app-tencentddns 
         git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
         git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+        git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
     #- name: Import external feeds - JerryKuKu Argon
     #  working-directory: ./openwrt

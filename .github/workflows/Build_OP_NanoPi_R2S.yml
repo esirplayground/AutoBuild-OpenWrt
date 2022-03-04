@@ -33,6 +33,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        set +e
         docker rmi `docker images -q`
         echo "Deleting files, please wait ..."
         sudo rm -rf \

@@ -5,7 +5,7 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_Newifi_D2
+name: Build_K2P
 
 on: 
   release:
@@ -77,9 +77,9 @@ jobs:
     #  run: |
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
     
-    - name: Configuration Customization - Build_Newifi_D2
+    - name: Configuration Customization - Build_K2P
       env:
-        CONFIG_FILE: 'Newifi_D2.config'
+        CONFIG_FILE: 'K2P.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh

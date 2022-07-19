@@ -89,6 +89,16 @@ jobs:
       run: |
         git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
 
+    - name: Import external feeds - Luci_Lingti
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/esirplayground/luci-app-LingTiGameAcc.git
+
+    - name: Import external feeds - Lingti
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/esirplayground/LingTiGameAcc.git
+
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'x86_64.config'

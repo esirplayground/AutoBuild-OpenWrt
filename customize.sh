@@ -8,6 +8,7 @@
 #1. Modify default IP
 sed -i 's/192.168.1.1/192.168.60.3/g' openwrt/package/base-files/files/bin/config_generate
 sed -i 's/192.168.$((addr_offset++)).1/192.168.$((addr_offset++)).2/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/255.255.255.0/255.255.254.0/g' openwrt/package/base-files/files/bin/config_generate
 
 #2. Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings

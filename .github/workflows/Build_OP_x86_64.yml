@@ -59,7 +59,7 @@ jobs:
 
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/coolsnowwolf/lede.git
+        REPO_URL: https://github.com/openwrt/openwrt.git
         REPO_BRANCH: master
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
@@ -88,6 +88,11 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
+        
+    - name: Import external feeds - Lean package
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/openwrt/openwrt/tree/master/package package
 
     - name: Configuration Customization - Build_x86_64
       env:

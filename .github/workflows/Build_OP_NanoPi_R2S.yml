@@ -83,7 +83,8 @@ jobs:
     - name: Import external feeds - passwall2
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2-xiaorouji
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji
+        svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/xiaorouji/luci-app-passwall2
     #    git clone "your_github_link" package/"your_folder_name"
 
     - name: Import external feeds - adguardhome

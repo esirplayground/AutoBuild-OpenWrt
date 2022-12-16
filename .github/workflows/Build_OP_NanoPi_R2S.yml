@@ -80,10 +80,10 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
         
-    #- name: Import external feeds - passwall
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+    - name: Import external feeds - passwall2
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2-xiaorouji
     #    git clone "your_github_link" package/"your_folder_name"
 
     - name: Import external feeds - adguardhome
@@ -98,7 +98,8 @@ jobs:
 
     - name: Configuration Customization - Build_NanoPi_R2S
       env:
-        CONFIG_FILE: 'NanoPi_R2S.config'
+        CONFIG_FILE: 'NanoPi_R2S_New.config'
+        # CONFIG_FILE: 'NanoPi_R2S.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh

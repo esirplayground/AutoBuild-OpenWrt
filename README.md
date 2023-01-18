@@ -11,6 +11,12 @@ Hereby thank KFERMercer for his amazing job: https://github.com/KFERMercer/OpenW
 You could edit and enable "Sync Code" YAML file to let your forked repo keep updated.
 
 ## Usage
+**看了教程，备份下所学。**
+-1.进入.github/workflows，修改需要编译固件的yml,去掉push注释，点击commit就开始编译了，注意不能改变空格及缩进。
+-2.自定义固件
+-在编译固件时，通过./scripts/diffconfig.sh>diffconfig从config配置中抽取diffconfig文件。
+-通过nano diffconfig查看自定义固件内容，并替换config文件中内容即可自定义固件。
+-看了教程后还有一些疑问，下一步测试，比如我要自定义主题，添加passwall插件，后续补充。
 
 🔥🔥[Video Tutorial (in Mandrin) | 视频教程(国语)](https://youtu.be/9YO7nxNry-4)📺🎉
 

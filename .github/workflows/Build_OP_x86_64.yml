@@ -57,19 +57,8 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-
-    - name: Generate configuration file
-      working-directory: ./openwrt/lede
-      run: |
-        sed -i "2i # network config" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "3i uci set network.lan.ipaddr='192.168.1.254'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "4i uci set network.lan.proto='static'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "5i uci set network.lan.type='bridge'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "6i uci set network.lan.ifname='eth0'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "7i uci set network.lan.netmask='255.255.255.0'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "8i uci set network.lan.gateway='192.168.1.1'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "9i uci set network.lan.dns='192.168.1.1'" ./package/lean/default-settings/files/zzz-default-settings
-        sed -i "10i uci commit network\n" ./package/lean/default-settings/files/zzz-default-settings
+        echo >> feeds.conf.default
+        echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
 
     - name: Update & Install feeds
       working-directory: ./openwrt
@@ -77,17 +66,24 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
+        ./scripts/feeds update istore
+        ./scripts/feeds install -d y -p istore luci-app-store
 
-    #- name: Import external feeds - passwall
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"
+    - name: Import external feeds - DockerMan
+     working-directory: ./openwrt
+     run: |
+        git clone https://github.com/lisaac/luci-lib-docker.git package/luci-lib-docker
+        git clone https://github.com/lisaac/luci-app-dockerman.git package/luci-app-dockerman
+
+    - name: Import external feeds - passwall
+     working-directory: ./openwrt
+     run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
 
     - name: Import external feeds - JerryKuKu Argon
       working-directory: ./openwrt
       run: |
-        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
     - name: Import external feeds - UnblockNeteaseMusic
       working-directory: ./openwrt

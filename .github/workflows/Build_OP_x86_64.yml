@@ -56,7 +56,9 @@ jobs:
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
-        echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+        #echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+        echo "src-git luci-app-passwall https://github.com/xiaorouji/openwrt-passwall/tree/luci" >> ./feeds.conf.default
+        echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall/tree/packages" >> ./feeds.conf.default
         
     - name: Update & Install feeds
       working-directory: ./openwrt
@@ -96,6 +98,14 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+    - name: Upload firmware to cowtransfer
+      id: cowtransfer
+      working-directory: ./openwrt
+      run: |
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer fio ./bin 2>&1 | tee cowtransfer.log
+        ls ./bin >> cowtransfer.log
+        cat cowtransfer.log
 
     - name : Upload artifact
       uses: actions/upload-artifact@master

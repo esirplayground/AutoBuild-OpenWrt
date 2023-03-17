@@ -1,7 +1,7 @@
 # Action-Official
 
 
-Build OpenWrt firware [OpenWrt](https://github.com/openwrt/openwrt) using GitHub Actions  
+Build OpenWrt firmware [OpenWrt](https://github.com/openwrt/openwrt) using GitHub Actions  
 
 Very simple firmware, only with passwall.
 

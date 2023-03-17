@@ -1,8 +1,9 @@
-# AutoBuild-OpenWrt
+# Action-Official
 
 
 Build OpenWrt firware [OpenWrt](https://github.com/openwrt/openwrt) using GitHub Actions  
 
+Very simple firmware, only with passwall.
 
 Hereby thank P3TERX(https://github.com/P3TERX/Actions-OpenWrt/) AND esir(https://github.com/esirplayground/AutoBuild-OpenWrt)
 

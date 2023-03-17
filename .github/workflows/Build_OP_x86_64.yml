@@ -57,8 +57,8 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         #echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-        echo "src-git luci-app-passwall https://github.com/xiaorouji/openwrt-passwall/tree/luci" >> ./feeds.conf.default
-        echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall/tree/packages" >> ./feeds.conf.default
+        echo "src-git luci-app-passwall https://github.com/xiaorouji/openwrt-passwall;luci" >> ./feeds.conf.default
+        echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall;packages" >> ./feeds.conf.default
         
     - name: Update & Install feeds
       working-directory: ./openwrt

@@ -98,6 +98,7 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+
     - name: Upload firmware to cowtransfer
       id: cowtransfer
       working-directory: ./openwrt

@@ -105,8 +105,8 @@ jobs:
 
     - name: Configuration Customization - Build_NanoPi_R2S
       env:
-        CONFIG_FILE: 'NanoPi_R2S_New.config'
-        # CONFIG_FILE: 'NanoPi_R2S.config'
+        # CONFIG_FILE: 'NanoPi_R2S_New.config'
+        CONFIG_FILE: 'NanoPi_R2S.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh

@@ -82,8 +82,10 @@ jobs:
     - name: Import external feeds - passwall2
       working-directory: ./openwrt
       run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/xiaorouji
         svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2 package/xiaorouji/luci-app-passwall2
-        
+    # 第一行passwall必须要，否则报依赖错误
+
     - name: Update & Install feeds 2nd time
       working-directory: ./openwrt
       run: |

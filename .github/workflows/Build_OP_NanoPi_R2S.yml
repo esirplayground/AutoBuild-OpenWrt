@@ -7,7 +7,7 @@
 
 name: Build_NanoPi_R2S
 
-# Add a button to trigger the workflow
+ Add a button to trigger the workflow
 on: 
   repository_dispatch:
   workflow_dispatch:

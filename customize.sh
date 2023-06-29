@@ -6,10 +6,13 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 #1. Modify default IP
-sed -i 's/192.168.1.1/192.168.5.1/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.100.1/g' openwrt/package/base-files/files/bin/config_generate
 
 #2. Clear the login password
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./password/g' openwrt/package/lean/default-settings/files/zzz-default-settings
 
-#3. Replace with JerryKuKu’s Argon
+#3. Modify default Hostname
+sed -i "s/hostname='OpenWrt'/hostname='LEDE'/g" openwrt/package/base-files/files/bin/config_generate
+
+#4. Replace with JerryKuKu’s Argon
 #rm openwrt/package/lean/luci-theme-argon -rf

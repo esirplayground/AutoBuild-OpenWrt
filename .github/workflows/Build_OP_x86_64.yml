@@ -65,16 +65,16 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    #- name: Import external feeds - passwall
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
-    #    git clone "your_github_link" package/"your_folder_name"      
+    - name: Import external feeds - passwall
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+        git clone "your_github_link" package/"your_folder_name"      
 
-    #- name: Import external feeds - JerryKuKu Argon
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+    - name: Import external feeds - JerryKuKu Argon
+      working-directory: ./openwrt
+      run: |
+        git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
 
     - name: Configuration Customization - Build_x86_64
       env:
